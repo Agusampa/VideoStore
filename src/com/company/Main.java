@@ -49,6 +49,7 @@ public class Main {
         Boleta boleta9 = new Boleta(cliente3,pelicula3);
         Boleta boleta10 = new Boleta(cliente3,pelicula4);
         Boleta boleta11 = new Boleta(cliente2,pelicula3);
+        Boleta boleta12 = new Boleta(cliente2,pelicula3);
 
         videoStore.todasLasBoletas(boleta1);
         videoStore.todasLasBoletas(boleta2);
@@ -61,6 +62,7 @@ public class Main {
         videoStore.todasLasBoletas(boleta9);
         videoStore.todasLasBoletas(boleta10);
         videoStore.todasLasBoletas(boleta11);
+        videoStore.todasLasBoletas(boleta12);
 
         System.out.println("*****************************************\n* Hola, bienvenido a nuestro VideoStore!*\n*****************************************\n\nQue desea hacer?");
         System.out.println("1_Alquilar una pelicula\n2_Devolver una pelicula\n3_Gestionar el video club");

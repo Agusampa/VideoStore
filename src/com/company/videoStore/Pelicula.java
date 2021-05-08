@@ -1,5 +1,7 @@
 package com.company.videoStore;
 
+import java.util.Objects;
+
 public class Pelicula {
     private String genero;
     private String titulo;
@@ -104,4 +106,16 @@ public class Pelicula {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Pelicula)) return false;
+        Pelicula pelicula = (Pelicula) o;
+        return getDuracion() == pelicula.getDuracion() && getStock() == pelicula.getStock() && alquilada == pelicula.alquilada && getGenero().equals(pelicula.getGenero()) && getTitulo().equals(pelicula.getTitulo()) && getFechaDeLanzamiento().equals(pelicula.getFechaDeLanzamiento()) && clasificacionDeAudiencia.equals(pelicula.clasificacionDeAudiencia) && getPaisDeOrigen().equals(pelicula.getPaisDeOrigen()) && getDescripcion().equals(pelicula.getDescripcion());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getGenero(), getTitulo(), getFechaDeLanzamiento(), getDuracion(), clasificacionDeAudiencia, getPaisDeOrigen(), getDescripcion(), getStock(), alquilada);
+    }
 }
