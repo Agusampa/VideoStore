@@ -4,11 +4,14 @@ import com.company.videoStore.Boleta;
 import com.company.videoStore.Cliente;
 import com.company.videoStore.Pelicula;
 import com.company.videoStore.VideoStore;
+import org.w3c.dom.ls.LSException;
 
 
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -29,9 +32,9 @@ public class Main {
         videoStore.todosLosClientes(cliente3);
 
         Pelicula pelicula1 = new Pelicula("Accion", "BASE SECRETA", "20/3/2021", 200, "R", "EEUU", "Pelicula de guerra", 3);
-        Pelicula pelicula2 = new Pelicula("Aventura", "LA LEYENDA DE LA TUMABA DEL DRAGON", "17/9/2014", 97, "PG-13", "FR", "Dos hermanos buscando un dragon", 5);
-        Pelicula pelicula3 = new Pelicula("Comedia", "NIÑERA A PRUEBA DE BALAS", "30/1/2004", 118, "PG", "EEUU", "Una niñera un poco particular", 5);
-        Pelicula pelicula4 = new Pelicula("Comedia", "A", "30/1/2004", 118, "PG", "EEUU", "A", 5);
+        Pelicula pelicula2 = new Pelicula("Comedia", "NIÑERA A PRUEBA DE BALAS", "30/1/2004", 118, "PG", "EEUU", "Una niñera un poco particular", 5);
+        Pelicula pelicula3 = new Pelicula("Aventura", "LA LEYENDA DE LA TUMABA DEL DRAGON", "17/9/2014", 97, "PG-13", "FR", "Dos hermanos buscando un dragon", 5);
+        Pelicula pelicula4 = new Pelicula("Comedia", "ARNOLD", "30/1/2004", 118, "PG", "EEUU", "A", 2);
 
         videoStore.todasLasPeliculas(pelicula1);
         videoStore.todasLasPeliculas(pelicula2);
@@ -116,7 +119,6 @@ public class Main {
                     }
                 }
 
-                videoStore.mostrarBoletas();
 
                 break;
 
@@ -162,17 +164,22 @@ public class Main {
                         Pelicula peliculaMasAlquilada = videoStore.peliculaMasFrecuente();
                         System.out.println(peliculaMasAlquilada.toString());
                         System.out.println("/////////////////////////////////////////////");
-                        videoStore.mostrarBoletas();
+
 
 
                         break;
 
                     case 5:
-
+                        System.out.println("Las peliculas ordenadas por genero: \n");
+                        videoStore.ordenarPorGenero();
                         break;
 
                     case 6:
-
+                        List<Pelicula>peliculasPopulares = new ArrayList<>();
+                        peliculasPopulares = videoStore.ordenarPeliculasPorPopulariad();
+                        for (Pelicula p : peliculasPopulares){
+                            System.out.println(p.toString());
+                        }
                         break;
 
                     case 7:

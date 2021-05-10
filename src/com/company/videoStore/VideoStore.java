@@ -1,10 +1,9 @@
 package com.company.videoStore;
 
+import com.sun.deploy.uitoolkit.impl.awt.AWTPluginEmbeddedFrameWindow;
+
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import java.lang.Object;
 
@@ -151,34 +150,7 @@ public class VideoStore {
             }
         }
     }
-/*
-    public HashMap peliculaConteo(){
-        HashMap<Pelicula, Integer> mapa = new HashMap<>();
-        for(Boleta boletaAux : boletas){
-            Pelicula peliculaAux = new Pelicula();
-            peliculaAux = boletaAux.getPelicula();
-            if(mapa.containsKey(boletaAux.getPelicula())){
-                mapa.put(peliculaAux,mapa.get(peliculaAux) + 1);
-            }else{
-                mapa.put(peliculaAux,1);
-            }
 
-        }
-        return mapa;
-    }
-
-    public Pelicula modaPelicula(HashMap mapa) {
-        int mayor = 0;
-        Pelicula modaPelicula = new Pelicula();
-        Map mapaAux = new HashMap<Pelicula,Integer>();
-        for (Map.Entry<Pelicula, Integer> entry : mapa.entrySet()) {
-            if (entry.getValue() > mayor) {
-                mayor = entry.getValue();
-                modaPelicula = entry.getKey();
-            }
-        }
-        return modaPelicula;
-    }*/
 
     public Pelicula peliculaMasFrecuente(){
         int contador1 = 0;
@@ -200,6 +172,44 @@ public class VideoStore {
         }
         return peliculaAux;
     }
+
+    public void ordenarPorGenero(){
+
+        Collections.sort(peliculas, (x , y) -> x.getGenero().compareToIgnoreCase(y.getGenero()));
+        for(Pelicula peliculaAux : peliculas){
+            System.out.println(peliculaAux.toString());
+        }
+    }
+/*
+    public List ordenarPeliculasPorPopulariad(){
+        int contador1 = 0;
+        int contador2 = 0;
+        Pelicula peliculaAux = null;
+        List<Pelicula> peliculasAux = this.peliculas;
+        List<Pelicula> peliculasOrenadasPopularidad = new ArrayList<>();
+        while (peliculasAux != null){
+            System.out.println("golaaa");
+            for(Pelicula p : peliculasAux){
+                System.out.println("patoo");
+                contador2 = 0;
+                for(Boleta b : this.boletas){
+                    if(b.getPelicula().equals(p)){
+                        contador2++;
+                    }
+                }
+                if(contador2>contador1){
+                    System.out.println(p.toString());
+                    contador1=contador2;
+                    peliculaAux =  p;
+                    peliculasOrenadasPopularidad.add(peliculaAux);
+                }
+
+            }
+            peliculasAux.remove(peliculaAux);
+        }
+
+        return peliculasOrenadasPopularidad;
+    }*/
 }
 
 
